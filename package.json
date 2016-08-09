@@ -1,6 +1,6 @@
 {
   "name": "node-apple-receipt-verify",
-  "description": "Open files and URLs with gulp",
+  "description": "A Node.js module for In-App-Purchase receipt validation for iOS",
   "version": "1.0.0",
   "homepage": "https://github.com/ladeiko/node-apple-receipt-verify",
   "repository": {
