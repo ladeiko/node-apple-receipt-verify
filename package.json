@@ -1,0 +1,53 @@
+{
+  "name": "node-apple-receipt-verify",
+  "description": "Open files and URLs with gulp",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ladeiko/node-apple-receipt-verify",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ladeiko/node-apple-receipt-verify.git"
+  },
+  "author": {
+    "name": "Siarhei Ladzeika",
+    "email": "sergey.ladeiko@gmail.com"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "async": "^2.0.1",
+    "clone": "^1.0.2",
+    "lodash": "^4.14.2",
+    "request": "^2.74.0",
+    "shelljs": "^0.7.3",
+    "tempfile": "^1.1.1"
+  },
+  "scripts": {
+    "preinstall": "mkdir -p bin && cd src && make clean && make && rm -rf *.o && mv checkreceipt ../bin"
+  },
+  "engines": {
+    "node": ">= 0.9.0"
+  },
+  "keywords": [
+    "in-app-purchase",
+    "node",
+    "apple receipt"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ladeiko/node-apple-receipt-verify/issues"
+  },
+  "maintainers": [
+    {
+      "name": "Siarhei Ladzeika",
+      "email": "sergey.ladeiko@gmail.com"
+    }
+  ],
+  "directories": {},
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "devDependencies": {
+    "standard": "^7.1.2",
+    "surge": "^0.18.0"
+  }
+}
