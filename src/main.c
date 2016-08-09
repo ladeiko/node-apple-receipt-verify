@@ -20,7 +20,8 @@ int htoi(const char c) {
 }
 
 void uuidBytes(const char* uuidString, uint8_t* uuidBytes) {
-	for (int i = 0; i < 16;) {
+    int i;
+	for (i = 0; i < 16;) {
 		if (uuidString[0] == '-') {
 			uuidString++;
 			continue;
