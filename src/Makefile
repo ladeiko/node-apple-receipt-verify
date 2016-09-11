@@ -64,7 +64,7 @@ libsomething_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
 # Remove the lines below to convert it into a pure .am file
 TARGET = checkreceipt
 CFLAGS += -I.
-CFLAGS += -I/usr/local/openssl/include
+CFLAGS += -I/usr/local/openssl/include -I/opt/local/include
 OBJS=${ASN_MODULE_SOURCES:.c=.o} ${ASN_CONVERTER_SOURCES:.c=.o}
 
 all: $(TARGET)
