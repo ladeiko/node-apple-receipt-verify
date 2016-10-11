@@ -6,7 +6,7 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
-#### v.1.0.11
+#### v.1.0.12
 * Added 'originalTransactionId' to purchase description. 
 
 ### Debug Logging
