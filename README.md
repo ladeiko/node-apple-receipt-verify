@@ -4,6 +4,11 @@
 
 A Node.js module for In-App-Purchase receipt validation for iOS.
 
+### Changes
+
+#### v.1.0.11
+* Added 'originalTransactionId' to purchase description. 
+
 ### Debug Logging
 
 The module can optionally turn on verbose debug log.
