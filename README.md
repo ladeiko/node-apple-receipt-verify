@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.0.13
+* Fix validation error if UUID specified and running inside console.
+
 #### v.1.0.12
 * Added 'originalTransactionId' to purchase description. 
 
