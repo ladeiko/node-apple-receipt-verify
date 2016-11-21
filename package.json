@@ -1,7 +1,7 @@
 {
   "name": "node-apple-receipt-verify",
   "description": "A Node.js module for In-App-Purchase receipt validation for iOS",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "homepage": "https://github.com/ladeiko/node-apple-receipt-verify",
   "repository": {
     "type": "git",
