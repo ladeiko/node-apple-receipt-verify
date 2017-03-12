@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.0.19
+* Fix compilation on Mac OS when there is no openssl in standard paths and openssl was installed with brew.
+
 #### v.1.0.13
 * Fix validation error if UUID specified and running inside console.
 
