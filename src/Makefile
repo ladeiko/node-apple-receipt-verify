@@ -72,10 +72,12 @@ ifeq ($(UNAME_S),Darwin)
  ifneq ($(CELLAR_OPENSSL),)
   OPENSSL_PATH=$(shell brew info openssl | grep -o -E "/usr/local/Cellar/openssl/[0-9\.a-z]+")
   ifneq ($(OPENSSL_PATH),) 
-   CFLAGS += -I${OPENSSL_PATH}/include
+   CFLAGS  += -I${OPENSSL_PATH}/include
    LDFLAGS += -L${OPENSSL_PATH}/lib
   else
    CFLAGS += -I/usr/local/openssl/include
+   CFLAGS  += -I/usr/local/opt/openssl/include
+   LDFLAGS += -L/usr/local/opt/openssl/lib
   endif
  else
   CFLAGS += -I/usr/local/openssl/include
