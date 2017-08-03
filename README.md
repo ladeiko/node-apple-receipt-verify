@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.1.8
+* Bugfix
+
 #### v.1.1.7
 * Bugfix
 
