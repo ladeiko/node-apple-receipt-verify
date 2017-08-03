@@ -6,6 +6,17 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.1.1
+* Add special EmptyError class
+* Add filter to remove duplicates from response (based on transaction id)
+* Now validate also returns Promise, callback is optional
+* Add 'extended' option key, if passed, then extra info will be added to every purchase description:
+  * isTrialPeriod (presents only for subscriptions)
+  * environment (is the same for all purchases in response)
+  * originalPurchaseDate
+  * applicationVersion (is the same for all purchases in response)
+  * originalApplicationVersion (is the same for all purchases in response)
+
 #### v.1.0.19
 * Fix compilation on Mac OS when there is no openssl in standard paths and openssl was installed with brew.
 
@@ -38,7 +49,9 @@ Initializes module. Can be called more than once to reconfigure module.
 - `secret` [string] - Apple shared secret (See it in iTunes Connect: Go to My Apps > (select your app) > In-App Purchases > View or generate a shared secret) [optional]
 - `verbose` [boolean] - verbose logging switch, `false` by default. [optional]
 - `environment` [array of strings] - defines environments used for receipt validation on Apple servers. Supported environments: 'sandbox', 'production'. The sequence is important. Defaults to `['production']`. [optional]
-- `ignoreExpired` - if `true`, then expired purchases are skipped. Defaults to `true`. [optional]  
+- `ignoreExpired` - if `true`, then expired purchases are skipped. Defaults to `true`. [optional]
+- `extended` - if `true`, then purchases contains extended information. Defaults to `false`. (since v1.1.1) [optional]
+
 
 NOTE: Shared password is required for iTunes subscription purchases.
 
@@ -63,7 +76,13 @@ The purchased products list has structure:
     productId: <string>,
     purchaseDate: <number>,
     quantity: <number>,
-    *expirationDate: <number>
+    *expirationDate: <number>,
+    *isTrialPeriod: <boolean>,              // only for subscriptions and if extented = true
+    *environment: <string>,                 // only if extented = true
+    *originalPurchaseDate: <number>,        // only if extented = true
+    *applicationVersion: <string>,          // only if extented = true
+    *originalApplicationVersion: <string>   // only if extented = true
+
 },
 ...
 ]
@@ -75,16 +94,42 @@ Example:
 
 ```javascript
 var appleReceiptVerify = require('node-apple-receipt-verify');
+
+// Common initialization, later you can pass options for every request in options
 appleReceiptVerify.config({
     secret: "1234567890abcdef1234567890abcdef",
     environment: ['sandbox']
 });
+
+// Callback version
 appleReceiptVerify.validate({ receipt: appleReceipt, device: '438498A7-4850-41DB-BCBE-4E1756378E39' }, function (err, products) {
     if (err) {
         return console.error(err);
     }
     // ok!
 });
+
+// Callback version without device
+appleReceiptVerify.validate({ receipt: appleReceipt }, function (err, products) {
+    if (err) {
+        return console.error(err);
+    }
+    // ok!
+});
+
+// Promise version
+appleReceiptVerify.validate({ receipt: appleReceipt, device: '438498A7-4850-41DB-BCBE-4E1756378E39' })
+    .then(function (products) {
+        //  do something
+    })
+    .catch(function (err) {
+        if (err instanceof appleReceiptVerify.EmptyError) {
+            ...
+        }
+        else {
+            ...
+        }
+    });
 ```
 
 ### Contact
