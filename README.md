@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.1.3
+* Bugfix
+
 #### v.1.1.1
 * Add special EmptyError class
 * Add filter to remove duplicates from response (based on transaction id)
