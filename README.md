@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.2.1
+* Add `pendingRenewalInfo`
+
 #### v.1.1.8
 * Bugfix
 
