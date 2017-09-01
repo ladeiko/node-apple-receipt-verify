@@ -6,7 +6,7 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
-#### v.1.2.1
+#### v.1.3.3
 * Add `ignoreExpiredError` options to ignore error 21006 (subscription expired)
 * Update 'extened' information (cancellationDate and cancellationReason fields)
 * Bugfixes
