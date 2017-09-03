@@ -11,11 +11,11 @@ module.exports = {
 	},
 
   extract: function (options, callback) {
-    apple.extract(options, callback);
+    return apple.extract(options, callback);
   },
 
   validate: function (options, callback) {
-    apple.validate(options, callback);
+    return apple.validate(options, callback);
 	}
 
 };

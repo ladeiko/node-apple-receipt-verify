@@ -39,3 +39,6 @@ jspm_packages
 bin
 
 /.idea/
+
+src/*.o
+src/checkreceipt
