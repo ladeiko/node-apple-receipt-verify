@@ -89,7 +89,12 @@ endif
 CFLAGS += -I/opt/local/include -I/usr/local/include 
 LDFLAGS += -L/usr/local/lib
 
-all: $(TARGET)
+.PHONY: all copy
+
+copy: $(TARGET)
+	rm -rf *.o && mv ./checkreceipt ../bin
+
+all: copy
 
 $(TARGET): ${OBJS}
 	$(CC) $(CFLAGS) -lcrypto -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS)
