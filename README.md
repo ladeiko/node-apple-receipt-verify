@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.3.6
+* Add more accurate apple environment detection
+
 #### v.1.3.5
 * Add support of 'ignoreExpiredError' for sandbox receipts
 * Add workaround for issue: https://github.com/ladeiko/node-apple-receipt-verify/issues/1
