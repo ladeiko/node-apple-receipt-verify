@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.3.7
+* Fix EmptyError inheritance
+
 #### v.1.3.6
 * Add more accurate apple environment detection
 
