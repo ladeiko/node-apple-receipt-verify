@@ -97,7 +97,7 @@ copy: $(TARGET)
 all: copy
 
 $(TARGET): ${OBJS}
-	$(CC) $(CFLAGS) -lcrypto -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS)
+	$(CC) $(CFLAGS) -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS) -lcrypto
 
 .SUFFIXES:
 .SUFFIXES: .c .o
