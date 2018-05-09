@@ -6,6 +6,9 @@ A Node.js module for In-App-Purchase receipt validation for iOS.
 
 ### Changes
 
+#### v.1.3.8
+* Update Makefile from pull request. Also fix compilation under mac os with some versions of openssl installed with brew.
+
 #### v.1.3.7
 * Fix EmptyError inheritance
 

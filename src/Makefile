@@ -70,7 +70,7 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
  CELLAR_OPENSSL=$(shell which brew)
  ifneq ($(CELLAR_OPENSSL),)
-  OPENSSL_PATH=$(shell brew info openssl | grep -m 1 -o -E "/usr/local/Cellar/openssl/[0-9\.a-z]+")
+  OPENSSL_PATH=$(shell brew info openssl | grep -m 1 -o -E "/usr/local/Cellar/openssl/[0-9\.a-z]+[_0-9]*")
   ifneq ($(OPENSSL_PATH),) 
    CFLAGS  += -I${OPENSSL_PATH}/include
    LDFLAGS += -L${OPENSSL_PATH}/lib

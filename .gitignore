@@ -42,3 +42,4 @@ bin
 
 src/*.o
 src/checkreceipt
+package-lock.json
