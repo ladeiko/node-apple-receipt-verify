@@ -6,7 +6,14 @@ module.exports = {
 
   EmptyError: apple.EmptyError,
 
+  resetConfig: function () {
+    apple.resetConfig();
+  },
+
   config: function (options) {
+    if (arguments.length === 0) {
+      return apple.config();
+    }
     apple.config(options);
 	},
 
