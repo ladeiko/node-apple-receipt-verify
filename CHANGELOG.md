@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.5.1
+### Added
+* isInIntroOfferPeriod to extended info
+
 ## 1.4.1
 ### Fixed
 * [Error: Failed to validate purchase if ['sandbox', 'production']](https://github.com/ladeiko/node-apple-receipt-verify/issues/8)

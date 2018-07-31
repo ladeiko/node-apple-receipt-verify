@@ -62,6 +62,7 @@ The purchased products list has structure:
     quantity: <number>,
     *expirationDate: <number>,
     *isTrialPeriod: <boolean>,              // only for subscriptions and if extented = true
+    *isInIntroOfferPeriod: <boolean>,       // only for subscriptions and if extented = true, since v1.5.1
     *environment: <string>,                 // only if extented = true
     *originalPurchaseDate: <number>,        // only if extented = true
     *applicationVersion: <string>,          // only if extented = true
