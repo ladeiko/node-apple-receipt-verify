@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.5.2
+### Added
+* Error now has 'appleStatus'
+
 ## 1.5.1
 ### Added
 * isInIntroOfferPeriod to extended info

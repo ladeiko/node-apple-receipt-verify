@@ -10,7 +10,11 @@ function errorWithData(msg, data) {
   const err = new Error(msg);
   if (data) {
     err.data = data;
+    if (typeof data.status === 'number') {
+      err.appleStatus = data.status;
+    }
   }
+
   return err;
 }
 
@@ -87,6 +91,7 @@ function expiredReceiptData(extended = false) {
       bundleId: 'com.myapp',
       environment: 'production',
       isTrialPeriod: true,
+      isInIntroOfferPeriod: false,
       originalApplicationVersion: '1.0',
       originalPurchaseDate: 1526649072000,
       originalTransactionId: '250000287737863',
