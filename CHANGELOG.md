@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.5.3
+###  Changed
+* HTTP requests made now using 'https' module, because 'request' is deprecated and have some ugly issues.
+
 ## 1.5.2
 ### Added
 * Error now has 'appleStatus'

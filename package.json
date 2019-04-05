@@ -1,7 +1,7 @@
 {
   "name": "node-apple-receipt-verify",
   "description": "A Node.js module for Apple In-App-Purchase receipt validation for iOS",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "homepage": "https://github.com/ladeiko/node-apple-receipt-verify",
   "repository": {
     "type": "git",
@@ -13,16 +13,17 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "async": "^2.6.0",
-    "bluebird": "^3.5.1",
-    "clone": "^2.1.0",
-    "joi": "^13.4.0",
-    "lodash": "^4.17.10",
-    "request": "^2.85.0",
-    "shelljs": "^0.8.2"
+    "async": "^2.6.2",
+    "bluebird": "^3.5.4",
+    "clone": "^2.1.2",
+    "got": "^9.6.0",
+    "joi": "^14.3.1",
+    "lodash": "^4.17.11",
+    "shelljs": "^0.8.3"
   },
   "scripts": {
     "test": "mocha --bail",
+    "lint": "eslint lib/*.js test/*.js",
     "prepublishOnly": "node ./tools/sync_readme.js",
     "preinstall": "mkdir -p bin && cd src && make clean && make || true"
   },
@@ -55,13 +56,20 @@
     "linux"
   ],
   "devDependencies": {
-    "nock": "^9.3.3",
-    "should": "^13.2.1",
-    "standard": "^11.0.1",
-    "surge": "^0.20.1"
+    "@types/joi": "^14.3.2",
+    "@types/lodash": "^4.14.123",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "mocha": "^6.0.2",
+    "nock": "^10.0.6",
+    "should": "^13.2.3",
+    "standard": "^12.0.1",
+    "surge": "^0.20.3"
   },
   "config": {
     "unsafe-perm": true
   },
-  "readme": "# CHANGELOG\r\n\r\n## 1.5.2\r\n### Added\r\n* Error now has 'appleStatus'\r\n\r\n## 1.5.1\r\n### Added\r\n* isInIntroOfferPeriod to extended info\r\n\r\n## 1.4.1\r\n### Fixed\r\n* [Error: Failed to validate purchase if ['sandbox', 'production']](https:\/\/github.com\/ladeiko\/node-apple-receipt-verify\/issues\/8)\r\n\r\n## 1.4.0\r\n### Added\r\n* Support for ```excludeOldTransactions``` option\r\n* tests\r\n\r\n### Fixed\r\n* ignoreExpired behavior for single purchase in response\r\n\r\n## 1.3.8\r\n* Update Makefile from pull request. Also fix compilation under mac os with some versions of openssl installed with brew.\r\n\r\n## 1.3.7\r\n### Fixed\r\n* EmptyError inheritance\r\n\r\n## 1.3.6\r\n### Added\r\n* More accurate apple environment detection\r\n\r\n## 1.3.5\r\n### Added\r\n* Support of 'ignoreExpiredError' for sandbox receipts\r\n* Workaround for issue: https:\/\/github.com\/ladeiko\/node-apple-receipt-verify\/issues\/1\r\n\r\n## 1.3.4\r\n### Fixed\r\n* Return Promise from validate\r\n\r\n## 1.3.3\r\n### Added\r\n* `ignoreExpiredError` options to ignore error 21006 (subscription expired)\r\n### Changed\r\n* Update 'extended' information (cancellationDate and cancellationReason fields)\r\n### Fixed\r\n* Bugfixes\r\n\r\n## 1.2.1\r\n### Added\r\n* `pendingRenewalInfo`\r\n\r\n## 1.1.8\r\n### Fixed\r\n* Bugfix\r\n\r\n## 1.1.7\r\n### Fixed\r\n* Bugfix\r\n\r\n## 1.1.6\r\n### Fixed\r\n* Bugfix\r\n\r\n## 1.1.1\r\n### Added\r\n* Special EmptyError class\r\n* Filter to remove duplicates from response (based on transaction id)\r\n* Now validate also returns Promise, callback is optional\r\n* 'extended' option key, if passed, then extra info will be added to every purchase description:\r\n  * isTrialPeriod (presents only for subscriptions)\r\n  * environment (is the same for all purchases in response)\r\n  * originalPurchaseDate\r\n  * applicationVersion (is the same for all purchases in response)\r\n  * originalApplicationVersion (is the same for all purchases in response)\r\n\r\n## 1.0.19\r\n### Fixed\r\n* Compilation on Mac OS when there is no openssl in standard paths and openssl was installed with brew.\r\n\r\n## 1.0.13\r\n### Fixed\r\n* Validation error if UUID specified and running inside console.\r\n\r\n## 1.0.12\r\n### Added\r\n* 'originalTransactionId' to purchase description."
+  "readme": "# node-apple-receipt-verify\n\nA Node.js module for Apple In-App-Purchase receipt validation for iOS.\n\n### Changes\n\nSee [CHANGELOG](CHANGELOG.md)\n\n### Debug Logging\n\nThe module can optionally turn on verbose debug log.\n\nIn order to enable the verbose logging, give the following to `.config()`:\n\n```javascript\nvar appleReceiptVerify = require('node-apple-receipt-verify');\nappleReceiptVerify.config({\n  verbose: true\n});\n```\n\n### Methods\n\n#### .config(options [object])\n\nInitializes module. Can be called more than once to reconfigure module.\n\n**options**: supports following keys:\n- `secret` \\[string\\] \\[optional\\] - Apple shared secret (See it in iTunes Connect: Go to My Apps > (select your app) > In-App Purchases > View or generate a shared secret) [required]\n- `verbose` \\[boolean\\] \\[optional\\] - verbose logging switch, `false` by default. [optional]\n- `environment` \\[array of strings\\] \\[optional\\] - defines environments used for receipt validation on Apple servers. Supported environments: 'sandbox', 'production'. The sequence is important. Defaults to `['production']`.\n- `ignoreExpiredError` \\[boolean\\] \\[optional\\] - if true, then does not return error if receipt is expired. Default is false.\n- `ignoreExpired` \\[boolean\\] \\[optional\\] - if `true`, then expired purchases are skipped. Defaults to `true`.\n- `extended` \\[boolean\\] \\[optional\\] - if `true`, then purchases contains extended information. Defaults to `false`. (since v1.1.1)\n- `excludeOldTransactions` \\[boolean\\] \\[optional\\] -  If value is true, response includes only the latest renewal transaction for any subscriptions ([Apple Documentation](https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW3)).\n\n#### .config()\n\nReturns current global config.\n\n#### .validate(options [object], callback [function (err, purchasedProducts [array of objects ])])\n\nValidates an in-app-purchase receipt.\n\n**options**: supports keys:\n- `receipt` \\[required\\] - base64 encoded receipt.\n- `device` \\[optional\\] - iOS vendor identifier. Example `438498A7-4850-41DB-BCBE-4E1756378E39`. If specified, then module will check if receipt belongs to vendor identifier.\n\nYou can also add options passed to ```config()```, they override default options.\n\n**callback** \\[optional\\]:  receives error or list of purchased products embedded in receipt.\n\nThe purchased products list has structure:\n\n```\n[\n{\n    bundleId: <string>,\n    transactionId: <string>,\n    productId: <string>,\n    purchaseDate: <number>,\n    quantity: <number>,\n    *expirationDate: <number>,\n    *isTrialPeriod: <boolean>,              // only for subscriptions and if extented = true\n    *isInIntroOfferPeriod: <boolean>,       // only for subscriptions and if extented = true, since v1.5.1\n    *environment: <string>,                 // only if extented = true\n    *originalPurchaseDate: <number>,        // only if extented = true\n    *applicationVersion: <string>,          // only if extented = true\n    *originalApplicationVersion: <string>   // only if extented = true\n},\n...\n]\n```\n\n### Usage\n\n```javascript\nconst appleReceiptVerify = require('node-apple-receipt-verify');\n\n// Common initialization, later you can pass options for every request in options\nappleReceiptVerify.config({\n    secret: \"1234567890abcdef1234567890abcdef\",\n    environment: ['sandbox']\n});\n\n// Callback version\nappleReceiptVerify.validate({\n    receipt: appleReceipt,\n    device: '438498A7-4850-41DB-BCBE-4E1756378E39'\n }, function (err, products) {\n    if (err) {\n        return console.error(err);\n    }\n    // ok!\n});\n\n// Callback version without device\nappleReceiptVerify.validate({\n    receipt: appleReceipt\n  }, function (err, products) {\n    if (err) {\n        return console.error(err);\n    }\n    // ok!\n});\n\n// Promise version\nappleReceiptVerify.validate({\n    receipt: appleReceipt,\n    device: '438498A7-4850-41DB-BCBE-4E1756378E39'\n  })\n    .then(function (products) {\n        //  do something\n    })\n    .catch(function (err) {\n        if (err instanceof appleReceiptVerify.EmptyError) {\n            ...\n        }\n        else {\n            ...\n        }\n    });\n\n// Override environment\nappleReceiptVerify.validate({\n    receipt: appleReceipt,\n    device: '438498A7-4850-41DB-BCBE-4E1756378E39',\n    environment: ['sandbox' ]\n  }, function (err, products) {\n    if (err) {\n        return console.error(err);\n    }\n    // ok!\n});\n\n```\n\n### Special errors\n\n#### EmptyError - returned in case of receipt without purchase\n\n```\nconst appleReceiptVerify = require('node-apple-receipt-verify');\nconst EmptyError = appleReceiptVerify.EmptyError;\n```\n\n### Author\n* Siarhei Ladzeika < <sergey.ladeiko@gmail.com> >\n\n## LICENSE\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details\n"
 }

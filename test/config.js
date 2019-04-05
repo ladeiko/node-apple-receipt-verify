@@ -1,16 +1,7 @@
 'use strict';
 
-const _ = require('lodash');
-const assert = require('assert');
-const nock = require('nock');
 const verify = require('./../index');
 const should = require('should');
-
-function errorWithData(msg, data) {
-  const err = new Error(msg);
-  err.data = data;
-  return err;
-}
 
 describe('Config', function() {
 
