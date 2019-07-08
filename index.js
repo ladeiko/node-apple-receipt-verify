@@ -4,6 +4,8 @@ var apple = require('./lib/apple');
 
 module.exports = {
 
+  ERROR_CODES: apple.ERROR_CODES,
+
   EmptyError: apple.EmptyError,
 
   resetConfig: function () {

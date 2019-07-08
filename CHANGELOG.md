@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.5.4
+### Added
+
+* Add 21010 error code description.
+* Exported ERROR_CODES
+
 ## 1.5.3
 ###  Changed
 * HTTP requests made now using 'https' module, because 'request' is deprecated and have some ugly issues.
