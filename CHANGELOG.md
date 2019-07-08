@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.5.5
+### Changed
+
+* Fix error code name typo
+
 ## 1.5.4
 ### Added
 
