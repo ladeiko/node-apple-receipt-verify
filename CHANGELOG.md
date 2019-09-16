@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.6.1
+### Changed
+
+* Change text of unknown error
+
 ## 1.6.0
 ### Added
 
