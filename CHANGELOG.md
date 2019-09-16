@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.5.6
+### Changed
+
+* Add logging when failed to parse apple response
+
 ## 1.5.5
 ### Changed
 
