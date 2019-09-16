@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.6.0
+### Added
+
+* Added ServiceUnavailableError
+
 ## 1.5.6
 ### Changed
 

@@ -7,6 +7,7 @@ module.exports = {
   ERROR_CODES: apple.ERROR_CODES,
 
   EmptyError: apple.EmptyError,
+  ServiceUnavailableError: apple.ServiceUnavailableError,
 
   resetConfig: function () {
     apple.resetConfig();
