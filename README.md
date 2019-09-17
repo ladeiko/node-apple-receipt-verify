@@ -87,7 +87,7 @@ appleReceiptVerify.config({
 appleReceiptVerify.validate({
     receipt: appleReceipt,
     device: '438498A7-4850-41DB-BCBE-4E1756378E39'
- }, function (err, products) {
+ }, (err, products) => {
     if (err) {
         return console.error(err);
     }
@@ -97,7 +97,7 @@ appleReceiptVerify.validate({
 // Callback version without device
 appleReceiptVerify.validate({
     receipt: appleReceipt
-  }, function (err, products) {
+  }, (err, products) => {
     if (err) {
         return console.error(err);
     }
@@ -105,28 +105,30 @@ appleReceiptVerify.validate({
 });
 
 // Promise version
-appleReceiptVerify.validate({
+try {
+  
+  const products = await appleReceiptVerify.validate({
     receipt: appleReceipt,
     device: '438498A7-4850-41DB-BCBE-4E1756378E39'
-  })
-    .then(function (products) {
-        //  do something
-    })
-    .catch(function (err) {
-        if (err instanceof appleReceiptVerify.EmptyError) {
-            ...
-        }
-        else {
-            ...
-        }
-    });
+  });
+  
+  // todo
+}
+catch (e) {
+  if (e instanceof appleReceiptVerify.EmptyError) {
+    // todo
+  }
+  else if (e instanceof appleReceiptVerify.ServiceUnavailableError) {
+    // todo 
+  }
+}
 
 // Override environment
 appleReceiptVerify.validate({
     receipt: appleReceipt,
     device: '438498A7-4850-41DB-BCBE-4E1756378E39',
     environment: ['sandbox' ]
-  }, function (err, products) {
+  },  (err, products) => {
     if (err) {
         return console.error(err);
     }
@@ -135,14 +137,25 @@ appleReceiptVerify.validate({
 
 ```
 
-### Special errors
+### Errors
 
-#### EmptyError - returned in case of receipt without purchase
+Errors can have additional optional properties:
+
+* isRetryable (bool) - true if Apple service recommends to retry request a bit more later.
+* appleStatus (number) - status returned by Apple validation service.
+
+#### Special errors
+
+##### EmptyError - returned in case of receipt without purchase
 
 ```
 const appleReceiptVerify = require('node-apple-receipt-verify');
 const EmptyError = appleReceiptVerify.EmptyError;
 ```
+
+##### ServiceUnavailableError - returned when Apple validation service returned, e.g: 503, etc.
+
+You can retry request later.
 
 ### Author
 * Siarhei Ladzeika < <sergey.ladeiko@gmail.com> >

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.7.0
+
+### Added
+* isRetryable field to error
+
 ## 1.6.1
 ### Changed
 
