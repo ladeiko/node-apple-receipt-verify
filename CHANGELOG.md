@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.7.1
+
+### Fixed
+* Fixed crash when setting isRetryable field to error
+
 ## 1.7.0
 
 ### Added
