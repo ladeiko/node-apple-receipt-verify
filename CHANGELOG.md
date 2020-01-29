@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.7.2
+
+### Changed
+* Update isRetryable detection
+
 ## 1.7.1
 
 ### Fixed
