@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.7.3
+
+### Changed
+* Replace console.error for 503 with logError
+
 ## 1.7.2
 
 ### Changed
