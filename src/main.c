@@ -149,6 +149,25 @@ int validate(BIO* receiptBIO, const char* uuid) {
     //uuid_bytes("438498A7-4850-41DB-BCBE-4E1756378E39", guid);
     uuidBytes(uuid, deviceID);
     
+#if OPENSSL_VERSION_NUMBER > 0x10100000L
+    /* Declare and initialize an EVP context for OpenSSL. */
+    EVP_MD_CTX* evp_ctx = EVP_MD_CTX_new();
+
+    /* A buffer for result of the hash computation. */
+    uint8_t digest[20];
+    
+    /* Set up the EVP context to compute a SHA-1 digest. */
+    EVP_DigestInit_ex(evp_ctx, EVP_sha1(), NULL);
+    
+    /* Concatenate the pieces to be hashed.  They must be concatenated in this order. */
+    EVP_DigestUpdate(evp_ctx, deviceID, deviceIDSize);
+    EVP_DigestUpdate(evp_ctx, opaque->buf, opaque->size);
+    EVP_DigestUpdate(evp_ctx, bundle_id->buf, bundle_id->size);
+    
+    /* Compute the hash, saving the result into the digest variable. */
+    EVP_DigestFinal_ex(evp_ctx, digest, NULL);
+    EVP_MD_CTX_free(evp_ctx);
+#else
     /* Declare and initialize an EVP context for OpenSSL. */
     EVP_MD_CTX evp_ctx;
     EVP_MD_CTX_init(&evp_ctx);
@@ -166,6 +185,7 @@ int validate(BIO* receiptBIO, const char* uuid) {
     
     /* Compute the hash, saving the result into the digest variable. */
     EVP_DigestFinal_ex(&evp_ctx, digest, NULL);
+#endif
     
     return memcmp(digest, hash->buf, 20);
 }
