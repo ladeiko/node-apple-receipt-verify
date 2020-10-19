@@ -44,7 +44,7 @@ Validates an in-app-purchase receipt.
 
 **options**: supports keys:
 - `receipt` \[required\] - base64 encoded receipt.
-- `device` \[optional\] - iOS vendor identifier. Example `438498A7-4850-41DB-BCBE-4E1756378E39`. If specified, then module will check if receipt belongs to vendor identifier.
+- `device` \[optional\] - iOS vendor identifier. NOTE: [deprecated]
 
 You can also add options passed to ```config()```, they override default options.
 

@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.8.0
+
+### Fixed
+* Windows support (https://github.com/ladeiko/node-apple-receipt-verify/issues/13)
+
+### Changed
+* Removed code to verify vendor identifier
+* Update node_modules dependencies
+
 ## 1.7.4
 
 ### Changed
