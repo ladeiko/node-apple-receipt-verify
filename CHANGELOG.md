@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.9.0
+### Added
+* Add preorder_date (if found) 
+
+### Fixed
+* Now dates without values will removed from purchase.
+
 ## 1.8.0
 
 ### Fixed
