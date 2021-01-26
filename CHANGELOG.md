@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.9.1
+### Fixed
+* Fix preorder_date (if found) 
+* Fix: 'Error: Callback was already called.'
+
 ## 1.9.0
 ### Added
 * Add preorder_date (if found) 
