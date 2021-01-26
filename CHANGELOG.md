@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.9.2
+### Added
+* promotionalOfferId
+
 ## 1.9.1
 ### Fixed
 * Fix preorder_date (if found) 
