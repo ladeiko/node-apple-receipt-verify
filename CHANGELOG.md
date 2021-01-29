@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.9.3
+### Fixed
+* Internal logic
+
 ## 1.9.2
 ### Added
 * promotionalOfferId
