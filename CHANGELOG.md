@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.9.4
+### Fixed
+* Remove logging of password
+
 ## 1.9.3
 ### Fixed
 * Internal logic
