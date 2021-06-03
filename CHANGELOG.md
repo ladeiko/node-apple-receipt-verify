@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.10.0
+### Added
+* Add  originalApplicationVersion/applicationVersion/original_application_version/application_version to EmptyError
+
 ## 1.9.4
 ### Fixed
 * Remove logging of password
