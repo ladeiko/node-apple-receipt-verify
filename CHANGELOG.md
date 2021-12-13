@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## 1.12.0
+### Added
+* Add web_order_line_item_id support
+
 ## 1.11.0
 ### Added
-* Add  HTTP_PROXY support
+* Add HTTP_PROXY support
 
 ## 1.10.0
 ### Added
