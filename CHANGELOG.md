@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.11.0
+### Added
+* Add  HTTP_PROXY support
+
 ## 1.10.0
 ### Added
 * Add  originalApplicationVersion/applicationVersion/original_application_version/application_version to EmptyError
