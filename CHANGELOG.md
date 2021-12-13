@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.12.1
+### Fixed
+* https://github.com/ladeiko/node-apple-receipt-verify/issues/35
+
 ## 1.12.0
 ### Added
 * Add web_order_line_item_id support
