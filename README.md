@@ -1,6 +1,9 @@
 # node-apple-receipt-verify
 
 A Node.js module for Apple In-App-Purchase receipt validation for iOS.
+### Note: Storekit Versions:
+This works module with the (older) Storekit API, the newer [Storekit 2](https://developer.apple.com/storekit/) uses JWT tokens which can be verified without an API call to Apple
+
 
 ### Changes
 
