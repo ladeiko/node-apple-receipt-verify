@@ -39,6 +39,7 @@ function expiredReceiptResponse() {
       "transaction_id": "250003338696952",
       "web_order_line_item_id": "250000091943118",
       "bid": "com.myapp",
+      "app_account_token": '1',
       "product_id": "com.myapp.product",
       "purchase_date": "2018-05-21 13:11:11 Etc/GMT",
       "original_purchase_date": "2018-05-18 13:11:12 Etc/GMT",
@@ -62,6 +63,7 @@ function expiredReceiptResponse() {
       "app_item_id": "1200776424",
       "transaction_id": "250000287737863",
       "web_order_line_item_id": "251200091943117",
+      "app_account_token": '1',
       "version_external_identifier": "826299857",
       "product_id": "com.myapp.product",
       "purchase_date": "2018-05-18 13:11:11 Etc/GMT",
@@ -82,7 +84,9 @@ function expiredReceiptData(extended = false) {
       productId: 'com.myapp.product',
       purchaseDate: 1526649071000,
       quantity: 1,
-      expirationDate: 1526908271000
+      expirationDate: 1526908271000,
+      webOrderLineItemId: '251200091943117',
+      web_order_line_item_id: '251200091943117',
     }
   ];
   if (extended) {
@@ -95,6 +99,7 @@ function expiredReceiptData(extended = false) {
       originalApplicationVersion: '1.0',
       originalPurchaseDate: 1526649072000,
       originalTransactionId: '250000287737863',
+      appAccountToken: '1',
       pendingRenewalInfo: [
         {
           auto_renew_status: '0',
@@ -220,6 +225,7 @@ describe('Queries', function() {
         app_item_id: '1200776424',
         transaction_id: '250003338696952',
         web_order_line_item_id: '250000091943118',
+        app_account_token: '1',
         bid: 'com.myapp',
         product_id: 'com.myapp.product',
         purchase_date: '2018-05-21 13:11:11 Etc/GMT',
@@ -246,6 +252,7 @@ describe('Queries', function() {
         app_item_id: '1200776424',
         transaction_id: '250000287737863',
         web_order_line_item_id: '251200091943117',
+        app_account_token: '1',
         version_external_identifier: '826299857',
         product_id: 'com.myapp.product',
         purchase_date: '2018-05-18 13:11:11 Etc/GMT',
@@ -297,6 +304,7 @@ describe('Queries', function() {
         app_item_id: '1200776424',
         transaction_id: '250003338696952',
         web_order_line_item_id: '250000091943118',
+        app_account_token: '1',
         bid: 'com.myapp',
         product_id: 'com.myapp.product',
         purchase_date: '2018-05-21 13:11:11 Etc/GMT',
@@ -323,6 +331,7 @@ describe('Queries', function() {
         app_item_id: '1200776424',
         transaction_id: '250000287737863',
         web_order_line_item_id: '251200091943117',
+        app_account_token: '1',
         version_external_identifier: '826299857',
         product_id: 'com.myapp.product',
         purchase_date: '2018-05-18 13:11:11 Etc/GMT',

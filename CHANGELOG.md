@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.13.0
+### Fixed
+* https://github.com/ladeiko/node-apple-receipt-verify/issues/43
+
 ## 1.12.1
 ### Fixed
 * https://github.com/ladeiko/node-apple-receipt-verify/issues/35
