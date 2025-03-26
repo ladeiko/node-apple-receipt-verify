@@ -36,6 +36,7 @@ Initializes module. Can be called more than once to reconfigure module.
 - `ignoreExpired` \[boolean\] \[optional\] - if `true`, then expired purchases are skipped. Defaults to `true`.
 - `extended` \[boolean\] \[optional\] - if `true`, then purchases contains extended information. Defaults to `false`. (since v1.1.1)
 - `excludeOldTransactions` \[boolean\] \[optional\] -  If value is true, response includes only the latest renewal transaction for any subscriptions ([Apple Documentation](https://developer.apple.com/library/archive/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW3)).
+- `doNotRemoveNonSubscriptions` \[boolean\] \[optional\] -  If true, then lifetime purchases also will be returned.
 
 #### .config()
 
